@@ -1,0 +1,97 @@
+.navbar {
+   border-radius: none !important;
+   margin-bottom: 0px;
+}
+.nav > li > a {
+  
+    padding: 10px 25px;
+   }
+
+$nav-back-color: #fff;  //Цвет фона
+$nav-back-dropdown-color: #2C72B2; //Цвет фона выпадающего меню
+$nav-link-color: #000; //Цвет ссылок
+$nav-back-link-color-hover: #2C72B2; //фон ссылок
+$nav-link-color-hover: #fff; //цвет ссылок при наведении
+$nav-drodown-link-color: #fff; //Цвет ссылок выпадающего меню
+$nav-drodown-link-color-hover: #0d1e32;
+
+nav {
+	background-color: $nav-back-color;
+
+    .navbar-collapse {
+        padding-left: 0px;
+        padding-top: 0px;
+        border-radius: none;
+    }
+    &.navbar {
+    	border-radius: 0px;
+    	margin-bottom: 0px; 
+        padding-left: 0px;
+        padding-top: 0px;
+        border: none;
+        .navbar-header {
+            .navbar-toggle {
+ 
+            }
+            .navbar-brand {
+ 
+            }
+        }
+        .nav {
+            .dropdown {
+                >a {
+                    >i.mdi-navigation-expand-more {
+                        font: 20px/1 "Material-Design-Icons";
+                    }
+                }
+            }
+            .dropdown-menu {
+                border-color: $nav-back-dropdown-color;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+            }
+            &.navbar-nav {
+                > li {
+                    @include transition(background-color .1s .1s, color .1s); 
+                    border-right: 1px solid #E6E6E6;
+                    margin: 12px 0;
+                    &:nth-last-child(1) {
+                        border-right: none;
+                    }
+                    &:hover {
+                    background-color: $nav-back-dropdown-color;
+                    }
+                	&.dropdown {
+                        ul {
+                			background-color: $nav-back-dropdown-color;
+                			> li {
+                				a {
+                					color: $nav-drodown-link-color;
+                					padding: 10px;
+                                    @include transition(background-color .2s .3s, color 1s);
+                				&:hover {
+                					
+                				}
+                				}
+                				
+                			}
+
+                		}
+                	}
+                    > a {
+                    	color: $nav-link-color;
+                        font-weight: 400;
+                        padding: 12px 25px;
+                        @include transition(background-color .3s .2s, color .5s);
+                      &:hover, &:focus  {
+                    	background-color:$nav-back-link-color-hover;
+                    	text-shadow: 0 0 8px white;
+                    	color: $nav-link-color-hover;                        
+                    }    
+                    }
+                    
+                }
+            }
+           
+        }
+    }
+}

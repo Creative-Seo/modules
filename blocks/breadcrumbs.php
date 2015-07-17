@@ -1,4 +1,3 @@
-<!--Breadcrumbs-->
     <div class="breadcrumb-container">
       <div class="breadcrumb">
         <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Главная</span></a></span>
@@ -23,4 +22,3 @@ if(isset($breadcrumb3))
 		</span>
       </div>
     </div>
-<!--Breadcrumbs-->
