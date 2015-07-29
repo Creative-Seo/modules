@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<div class="modal-body">
+	<input type="text" name="tel" class="form-control" placeholder="Ваш телефон*">
+</div>
+<div class="modal-footer">
+	<button id="svyazbutton" type="button" class="btn btn-primary">Отправить</button>
+</div>
+
+<script src="../jquery.min.js"></script>
+<script src="jquery.maskedinput.min.js"></script>
+<script>
+$(document).ready(function() {
+	$(".modal-body [name=tel]").mask("+7 (999) 999-9999",{autoclear: false, placeholder:'+7 (___) ___-____'});
+	
+	$(".modal-body [name=tel]").keypress(function(){if ($(this).val().indexOf('_')==-1){$(this).css('border-color','#ccc');}});
+	$('#svyazbutton').click(function(){
+		if ($(".modal-body [name=tel]").val().indexOf('_')!=-1){$(".modal-body [name=tel]").css('border-color','red');$('.modal-body p').css('visibility','visible');}
+			else{alert('ok');}});
+});
+</script>
