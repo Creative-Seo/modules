@@ -2,7 +2,7 @@
 error_reporting(0);
 
 // Ключ
-define('KEY', 'xZuyP93oNVpiNx4w4EemBxbFvGNFgWah');
+define('KEY', 'SMs1aK4M2dIzgHYLddY1HDK3xf5nvXPi');
 
 // Разрешаем доступ только тем, кто знает ключ
 if ($_POST['key'] != KEY) { header('HTTP/1.0 404 Not Found'); exit(); }
@@ -12,8 +12,7 @@ $n = (isset($_POST['n'])) ? _fd($_POST['n']) : '';
 $t = (isset($_POST['t'])) ? _fd($_POST['t']) : '';
 $tel = (isset($_POST['tel'])) ? _fd($_POST['tel']) : '';
 $email = (isset($_POST['email'])) ? _fd($_POST['email']) : '';
-$col = (isset($_POST['col'])) ? _fd($_POST['col']) : '';
-$ta = (isset($_POST['ta'])) ? _fd($_POST['ta']) : '';
+$message = (isset($_POST['message'])) ? _fd($_POST['message']) : '';
 
 // MESSAGE BODY
 $body = '';
@@ -22,12 +21,10 @@ if(!empty($n) || !empty($t)) {
 	if(!empty($n)) $body .= 'Имя: '.$n."<br />\n";
 	if(!empty($tel)) $body .= 'Телефон: '.$tel."\n";
 	if(!empty($email)) $body .= 'E-mail: '.$email."\n";
-	if(!empty($col)) $body .= 'Количество товара: '.$col."\n";
-	if(!empty($ta)) $body .= 'Вопрос: '.$ta."\n";
+	if(!empty($message)) $body .= 'Сообщение: '.$message."\n";
 	$body .= "<hr>\n";
-}
 
-$to = 'agro-optim@mail.ru';
+$to = 'info@info.ru';
 $subject = 'Заказ проекта';
 $body = <<<EOF
 <html>
@@ -43,17 +40,14 @@ EOF;
 
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-$headers .= "From: SITE <info@sk-goldenhome.ru>\r\n";
+$headers .= "From: SITE <".$to.">\r\n";
 
-if(mail($to, $subject, $body, $headers))
-	echo "Ваше заказ отправлен!\nВ ближайшее время мы с вами свяжемся.";
-else
-	echo "Ошибка отправки данных!";
-
-
+if(mail($to, $subject, $body, $headers)) echo true;
+	else echo false;
+	
+} else	echo false;
 // FILTER
 function _fd($str) {
 	return trim(strip_tags(addslashes(trim($str))));
 }
-
 ?>
